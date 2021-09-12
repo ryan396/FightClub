@@ -14,7 +14,7 @@ import Card from "primevue/card";
 import Divider from "primevue/divider";
 import Fieldset from "primevue/fieldset";
 import InputText from "primevue/inputtext";
-import { store } from "./store/store";
+import store from "./store";
 import "primevue/resources/primevue.min.css";
 import "primeflex/primeflex.css";
 

@@ -65,10 +65,12 @@
 import { ref, onMounted } from "vue";
 import Monsters from "../service/service";
 import { FilterMatchMode } from "primevue/api";
+import { useStore } from "vuex";
 
 export default {
   name: "MonsterTable",
   setup() {
+    const store = useStore();
     onMounted(() => {
       Monsters.getAll()
         .get()
@@ -82,7 +84,7 @@ export default {
         });
     });
     const addMonster = (monster) => {
-      console.log(monster);
+      store.dispatch(`encounter/addMonsterToEncounter`, monster);
     };
     const filters = ref({
       global: { value: null, matchMode: FilterMatchMode.CONTAINS },
