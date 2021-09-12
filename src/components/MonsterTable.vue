@@ -34,7 +34,7 @@
           <template #body="slotProps">
             <Button
               icon="pi pi-plus"
-              class="p-button-rounded p-button-success p-mr-2"
+              class="p-button-rounded p-button-success"
               @click="addMonster(slotProps.data)"
             />
           </template>
@@ -55,6 +55,7 @@
         <Column field="level" header="Level" :sortable="true"></Column>
         <Column field="class" header="Class" :sortable="true"></Column>
         <Column field="type" header="Type" :sortable="true"></Column>
+        <Column field="countsAs" header="Counts As"></Column>
         <Column field="page" header="Page"></Column>
       </DataTable>
     </div>
@@ -63,7 +64,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import Monsters from "../service/service";
+// import Monsters from "../service/service";
 import { FilterMatchMode } from "primevue/api";
 import { useStore } from "vuex";
 
@@ -71,17 +72,18 @@ export default {
   name: "MonsterTable",
   setup() {
     const store = useStore();
+
     onMounted(() => {
-      Monsters.getAll()
-        .get()
-        .then((snapshot) => {
-          let monsterArr = [];
-          snapshot.forEach((doc) => {
-            let monster = doc.data();
-            monsterArr.push(monster);
-          });
-          monsters.value = monsterArr;
-        });
+      // Monsters.getAll();
+      // .get()
+      // .then((snapshot) => {
+      //   let monsterArr = [];
+      //   snapshot.forEach((doc) => {
+      //     let monster = doc.data();
+      //     monsterArr.push(monster);
+      //   });
+      //   monsters.value = monsterArr;
+      // });
     });
     const addMonster = (monster) => {
       store.dispatch(`encounter/addMonsterToEncounter`, monster);
@@ -90,7 +92,35 @@ export default {
       global: { value: null, matchMode: FilterMatchMode.CONTAINS },
       name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     });
-    const monsters = ref();
+    const monsters = [
+      {
+        countsAs: 0.15,
+        level: 2,
+        name: "bone imp mage-eater",
+        strength: "weakling",
+        type: "mook",
+        page: "2B:20",
+        class: "DEMON",
+      },
+      {
+        countsAs: 0.15,
+        level: 0,
+        name: "squib swarm",
+        strength: "normal",
+        type: "mook",
+        page: "B:179",
+        class: "BEAST",
+      },
+      {
+        countsAs: 0.15,
+        level: 0,
+        name: "stirgelings",
+        strength: "normal",
+        type: "mook",
+        page: "B:197",
+        class: "BEAST",
+      },
+    ];
     return { monsters, filters, addMonster };
   },
 };

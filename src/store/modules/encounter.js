@@ -3,37 +3,32 @@ export const state = {
 };
 
 const getters = {
-  encounter: (state) => {
+  getEncounter: (state) => {
     return state.encounter;
   },
 };
 
 const actions = {
   addMonsterToEncounter({ state, commit }, monster) {
-    let newMonster = { ...monster };
-    if (state.encounter.length > 0) {
-      const selectedMonster = state.encounter.find(
-        (item) => item.name === newMonster.name
-      );
-      if (!selectedMonster) {
-        newMonster.quantity = 1;
-        commit("addMonster", newMonster);
-      } else {
-        commit("incrementMonsterCount", selectedMonster);
-      }
+    const selectedMonster = state.encounter.find(
+      (item) => item.name === monster.name
+    );
+    console.log(selectedMonster);
+    if (!selectedMonster) {
+      commit("addMonster", monster);
     } else {
-      commit("addMonster", newMonster);
-      newMonster.quantity = 1;
+      commit("incrementMonsterCount", selectedMonster);
     }
   },
 };
 
 const mutations = {
   addMonster(state, monster) {
+    monster.quantity = 1;
     state.encounter.push(monster);
   },
   incrementMonsterCount(state, { name }) {
-    const selectedMonster = state.encounter.find((item) => (item.name = name));
+    const selectedMonster = state.encounter.find((item) => item.name === name);
     selectedMonster.quantity++;
   },
   decrementMonsterCount(state, { name }) {

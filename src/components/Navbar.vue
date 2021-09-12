@@ -8,6 +8,22 @@
           height="65"
         />
       </template>
+      <template #item="{item}">
+        <router-link
+          :to="item.path"
+          custom
+          v-slot="{ href, navigate, isActive, isExactActive }"
+          ><a
+            :href="href"
+            @click="navigate"
+            :class="{
+              'active-link': isActive,
+              'active-link-exact': isExactActive,
+            }"
+            ><i :class="item.icon"></i>{{ item.label }}</a
+          ></router-link
+        >
+      </template>
     </Menubar>
   </div>
 </template>
@@ -22,10 +38,12 @@ export default {
       {
         label: "Encounter Builder",
         icon: "pi pi-fw pi-file",
+        path: "/",
       },
       {
         label: "My Encounters",
         icon: "pi pi-fw pi-pencil",
+        path: "/MyEncounters",
       },
     ]);
 
@@ -37,5 +55,11 @@ export default {
 <style scoped>
 #nav {
   margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #2c3e50;
+  padding: 10px;
 }
 </style>

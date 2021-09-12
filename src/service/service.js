@@ -1,6 +1,6 @@
-import { db } from "./firebase";
-
-const monsters = db.collection("monsters");
+// import { db } from "./firebase";
+import { monsters } from "./test-data";
+// const monsters = db.collection("monsters");
 
 class Monsters {
   getAll() {

@@ -15,6 +15,9 @@ import Divider from "primevue/divider";
 import Fieldset from "primevue/fieldset";
 import InputText from "primevue/inputtext";
 import store from "./store";
+import router from "./router/router";
+import Panel from "primevue/panel";
+import InputNumber from "primevue/inputnumber";
 import "primevue/resources/primevue.min.css";
 import "primeflex/primeflex.css";
 
@@ -32,5 +35,8 @@ app.component("Card", Card);
 app.component("Divider", Divider);
 app.component("Fieldset", Fieldset);
 app.component("InputText", InputText);
+app.component("Panel", Panel);
+app.component("InputNumber", InputNumber);
+app.use(router);
 app.use(store);
 app.mount("#app");
