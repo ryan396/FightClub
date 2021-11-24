@@ -1,4 +1,5 @@
 <template>
+  <Toast />
   <div class="grid">
     <div class="col-12 md:col-12 lg:col-4">
       <Card>
@@ -44,16 +45,24 @@ import Encounter from '../components/Encounter.vue'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { computed } from '@vue/reactivity'
+import { useToast } from 'primevue/usetoast'
 
 export default {
   setup() {
     const grouplevel = ref(1)
     const playerCount = ref(1)
     const store = useStore()
+    const toast = useToast()
 
     const saveEncounter = () => {
       const encounter = store.getters[`encounter/getEncounter`]
       store.dispatch(`myEncounters/addEncounterToList`, encounter)
+      toast.add({
+        severity: 'success',
+        summary: 'Success!',
+        detail: 'Encounter saved',
+        life: 3000
+      })
     }
 
     const challengeRating = computed(

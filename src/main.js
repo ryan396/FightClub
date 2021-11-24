@@ -20,6 +20,8 @@ import store from './store'
 import router from './router/router'
 import Panel from 'primevue/panel'
 import InputNumber from 'primevue/inputnumber'
+import Toast from 'primevue/toast'
+import ToastService from 'primevue/toastservice'
 
 const app = createApp(App)
 
@@ -37,6 +39,8 @@ app.component('Fieldset', Fieldset)
 app.component('InputText', InputText)
 app.component('Panel', Panel)
 app.component('InputNumber', InputNumber)
+app.component('Toast', Toast)
+app.use(ToastService)
 app.use(router)
 app.use(store)
 app.mount('#app')
