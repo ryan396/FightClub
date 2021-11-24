@@ -19,9 +19,9 @@
             min="1"
           />
           <Divider />
-          Challenge Rating: 222
+          Challenge Rating: {{ challengeRating }}
           <Divider />
-          <Button style="marginRight: 10px">Save</Button>
+          <Button style="marginRight: 10px" @click="saveEncounter">Save</Button>
           <Button style="marginLeft: 10px">Export</Button>
           <Divider />
           <Encounter />
@@ -42,12 +42,25 @@
 import MonsterTable from '../components/MonsterTable.vue'
 import Encounter from '../components/Encounter.vue'
 import { ref } from 'vue'
+import { useStore } from 'vuex'
+import { computed } from '@vue/reactivity'
 
 export default {
   setup() {
     const grouplevel = ref(1)
     const playerCount = ref(1)
-    return { grouplevel, playerCount }
+    const store = useStore()
+
+    const saveEncounter = () => {
+      const encounter = store.getters[`encounter/getEncounter`]
+      store.dispatch(`myEncounters/addEncounterToList`, encounter)
+    }
+
+    const challengeRating = computed(
+      () => store.getters[`encounter/getChallengeRating`]
+    )
+
+    return { grouplevel, playerCount, saveEncounter, challengeRating }
   },
   name: 'App',
   components: {

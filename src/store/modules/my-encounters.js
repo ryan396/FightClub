@@ -1,24 +1,24 @@
 export const state = {
-  myEncounters: []
+  myEncounterList: []
 }
 
 const getters = {
-  getMyEncounters: state => {
-    return state.myEncounters
+  getMyEncounterList: state => {
+    return state.myEncounterList
   }
 }
 
 const actions = {
   addEncounterToList({ commit }, encounter) {
-    commit('addEncounter', encounter)
+    commit('saveEncounter', encounter)
   }
 }
 
 const mutations = {
-  addEncounter(state, encounter) {
-    state.myEncounters.push(encounter)
-  },
-  removeEncounter(state, encounter) {}
+  saveEncounter(state, encounter) {
+    state.myEncounterList.push(encounter)
+  }
+  // removeEncounter(state, encounter) {}
 }
 
 export default {

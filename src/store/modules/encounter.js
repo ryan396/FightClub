@@ -5,7 +5,18 @@ export const state = {
 
 const getters = {
   getEncounter: state => {
-    return state.encounter
+    state.challengeRating = 0
+    state.encounter.forEach(item => {
+      state.challengeRating += item.quantity * item.countsAs
+    })
+    return state
+  },
+  getChallengeRating: state => {
+    let challengeRating = 0
+    state.encounter.forEach(item => {
+      challengeRating += item.quantity * item.countsAs
+    })
+    return challengeRating
   }
 }
 
@@ -43,7 +54,6 @@ const mutations = {
   },
   updateCount(state, { name, count }) {
     const selectedMonster = state.encounter.find(item => item.name === name)
-    console.log('ran', selectedMonster.name)
     selectedMonster.quantity = count
   },
   incrementMonsterCount(state, { name }) {

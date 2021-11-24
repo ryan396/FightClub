@@ -50,7 +50,10 @@ export default {
     const removeMonster = name => {
       store.dispatch(`encounter/removeMonster`, name)
     }
-    const encounter = computed(() => store.getters[`encounter/getEncounter`])
+
+    const encounter = computed(
+      () => store.getters[`encounter/getEncounter`].encounter
+    )
 
     return { encounter, updateMonsterCount, removeMonster }
   }

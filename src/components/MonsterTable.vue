@@ -29,16 +29,16 @@
         </span>
       </div>
     </template>
-    <Column :exportable="false">
+    <Column :exportable="false" headerStyle="width: 100px">
       <template #body="slotProps">
         <Button
-          icon="pi pi-plus"
-          class="p-button-rounded"
+          icon="pi pi-plus lg"
+          class="p-button-sm"
           @click="addMonster(slotProps.data)"
         />
       </template>
     </Column>
-    <Column field="name" header="Name" style="min-width:12rem">
+    <Column field="name" header="Name" headerStyle="width: 400px">
       <template #body="{data}">
         {{ data.name }}
       </template>
@@ -51,7 +51,12 @@
         />
       </template>
     </Column>
-    <Column field="level" header="Level" :sortable="true"></Column>
+    <Column
+      field="level"
+      header="Level"
+      :sortable="true"
+      headerStyle="width: 100px"
+    ></Column>
     <Column field="class" header="Class" :sortable="true"></Column>
     <Column field="type" header="Type" :sortable="true"></Column>
     <Column field="countsAs" header="Counts As"></Column>
@@ -99,5 +104,6 @@ export default {
 <style scope>
 #card {
   height: 100%;
+  font-size: 12px;
 }
 </style>
