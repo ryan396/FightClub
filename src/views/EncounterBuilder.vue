@@ -3,17 +3,28 @@
     <div class="col-12 md:col-12 lg:col-4">
       <Card>
         <template #content>
-          <Fieldset legend="Encounter">
-            <label for="grouplevel">Group Level</label>
-            <InputNumber id="grouplevel" v-model="grouplevel" showButtons />
-            <Divider />
-            Challenge Rating: 222
-            <Divider />
-            <Button>Save</Button>
-            <Button>Export</Button>
-            <Divider />
-            <Encounter />
-          </Fieldset>
+          <label for="grouplevel">Level</label>
+          <InputNumber
+            id="grouplevel"
+            v-model="grouplevel"
+            showButtons
+            min="1"
+            max="9"
+          />
+          <label id="playerCountLabel" for="playerCount">Players</label>
+          <InputNumber
+            id="playerCount"
+            v-model="playerCount"
+            showButtons
+            min="1"
+          />
+          <Divider />
+          Challenge Rating: 222
+          <Divider />
+          <Button style="marginRight: 10px">Save</Button>
+          <Button style="marginLeft: 10px">Export</Button>
+          <Divider />
+          <Encounter />
         </template>
       </Card>
     </div>
@@ -35,7 +46,8 @@ import { ref } from 'vue'
 export default {
   setup() {
     const grouplevel = ref(1)
-    return { grouplevel }
+    const playerCount = ref(1)
+    return { grouplevel, playerCount }
   },
   name: 'App',
   components: {
@@ -47,6 +59,13 @@ export default {
 
 <style scope>
 #grouplevel {
+  width: 50px;
+  margin-left: 10px;
+}
+#playerCountLabel {
+  margin-left: 10px;
+}
+#playerCount {
   width: 50px;
   margin-left: 10px;
 }

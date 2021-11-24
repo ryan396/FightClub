@@ -2,7 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import 'primevue/resources/primevue.min.css'
-// import 'primevue/resources/themes/saga-blue/theme.css'
+import 'primevue/resources/themes/tailwind-light/theme.css'
+import 'primeflex/primeflex.css'
 import 'primeicons/primeicons.css'
 import Menubar from 'primevue/menubar'
 import DataTable from 'primevue/datatable'
@@ -19,8 +20,6 @@ import store from './store'
 import router from './router/router'
 import Panel from 'primevue/panel'
 import InputNumber from 'primevue/inputnumber'
-import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'
-import 'primeflex/primeflex.css'
 
 const app = createApp(App)
 

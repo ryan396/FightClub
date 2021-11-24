@@ -1,10 +1,11 @@
 <template>
   <DataTable
     class="p-datatable-sm"
-    :value="monsters"
+    :value="monsterList"
     responsiveLayout="stack"
     breakpoint="960px"
     :paginator="true"
+    showGridlines
     :rows="10"
     stripedRows=""
     paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
@@ -32,7 +33,7 @@
       <template #body="slotProps">
         <Button
           icon="pi pi-plus"
-          class="p-button-rounded p-button-success"
+          class="p-button-rounded"
           @click="addMonster(slotProps.data)"
         />
       </template>
@@ -60,7 +61,7 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-// import Monsters from "../service/service";
+import monsters from '../service/test-data'
 import { FilterMatchMode } from 'primevue/api'
 import { useStore } from 'vuex'
 
@@ -88,36 +89,9 @@ export default {
       global: { value: null, matchMode: FilterMatchMode.CONTAINS },
       name: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
     })
-    const monsters = [
-      {
-        countsAs: 0.15,
-        level: 2,
-        name: 'bone imp mage-eater',
-        strength: 'weakling',
-        type: 'mook',
-        page: '2B:20',
-        class: 'DEMON'
-      },
-      {
-        countsAs: 0.15,
-        level: 0,
-        name: 'squib swarm',
-        strength: 'normal',
-        type: 'mook',
-        page: 'B:179',
-        class: 'BEAST'
-      },
-      {
-        countsAs: 0.15,
-        level: 0,
-        name: 'stirgelings',
-        strength: 'normal',
-        type: 'mook',
-        page: 'B:197',
-        class: 'BEAST'
-      }
-    ]
-    return { monsters, filters, addMonster }
+    const monsterList = monsters
+
+    return { monsterList, filters, addMonster }
   }
 }
 </script>

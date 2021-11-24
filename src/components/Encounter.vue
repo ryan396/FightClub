@@ -10,7 +10,7 @@
         </button>
       </template>
       <div class="grid">
-        <div class="col-9">
+        <div class="col-8">
           <p>Counts As: {{ item.countsAs }}</p>
           <p>Source: {{ item.page }}</p>
         </div>
@@ -22,8 +22,6 @@
             buttonLayout="horizontal"
             :step="1"
             @input="event => updateMonsterCount(event, item)"
-            decrementButtonClass="p-button-danger"
-            incrementButtonClass="p-button-success"
             incrementButtonIcon="pi pi-plus"
             decrementButtonIcon="pi pi-minus"
           />
