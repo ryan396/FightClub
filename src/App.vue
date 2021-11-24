@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue";
+import Navbar from './components/Navbar.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Navbar,
-  },
-};
+    Navbar
+  }
+}
 </script>
 
 <style>
@@ -22,5 +22,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+html {
+  background-color: #d3d3d3;
 }
 </style>

@@ -2,17 +2,31 @@
   <div id="panel" v-for="(item, index) in encounter" v-bind:key="index">
     <Panel :header="item.name">
       <template #icons>
-        <button class="p-panel-header-icon p-link p-mr-2" @click="toggle">
+        <button
+          class="p-panel-header-icon p-link p-mr-2"
+          @click="removeMonster(item.name)"
+        >
           <span class="pi pi-trash"></span>
         </button>
       </template>
       <div class="grid">
-        <div class="col-11">
+        <div class="col-9">
           <p>Counts As: {{ item.countsAs }}</p>
           <p>Source: {{ item.page }}</p>
         </div>
         <div class="col-1">
-          {{ item.quantity }}
+          <InputNumber
+            id="qty-input"
+            v-model="item.quantity"
+            showButtons
+            buttonLayout="horizontal"
+            :step="1"
+            @input="event => updateMonsterCount(event, item)"
+            decrementButtonClass="p-button-danger"
+            incrementButtonClass="p-button-success"
+            incrementButtonIcon="pi pi-plus"
+            decrementButtonIcon="pi pi-minus"
+          />
         </div>
       </div>
     </Panel>
@@ -20,17 +34,29 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
-import { useStore } from "vuex";
+import { computed } from '@vue/reactivity'
+import { useStore } from 'vuex'
 
 export default {
   setup() {
-    const store = useStore();
+    const store = useStore()
 
-    const encounter = computed(() => store.getters[`encounter/getEncounter`]);
-    return { encounter };
-  },
-};
+    const updateMonsterCount = (event, item) => {
+      let values = {
+        name: item.name,
+        count: event.value
+      }
+      store.dispatch(`encounter/updateMonsterCount`, values)
+    }
+
+    const removeMonster = name => {
+      store.dispatch(`encounter/removeMonster`, name)
+    }
+    const encounter = computed(() => store.getters[`encounter/getEncounter`])
+
+    return { encounter, updateMonsterCount, removeMonster }
+  }
+}
 </script>
 
 <style scope>
@@ -40,7 +66,7 @@ export default {
 }
 
 #qty-input {
-  width: 20px;
+  width: 40px;
 }
 .button {
   margin: 1px;

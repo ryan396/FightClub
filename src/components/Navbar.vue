@@ -18,7 +18,7 @@
             @click="navigate"
             :class="{
               'active-link': isActive,
-              'active-link-exact': isExactActive,
+              'active-link-exact': isExactActive
             }"
             ><i :class="item.icon"></i>{{ item.label }}</a
           ></router-link
@@ -29,34 +29,35 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref } from 'vue'
 
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   setup() {
     const items = ref([
       {
-        label: "Encounter Builder",
-        icon: "pi pi-fw pi-file",
-        path: "/",
+        label: 'Encounter Builder',
+        icon: 'pi pi-fw pi-file',
+        path: '/'
       },
       {
-        label: "My Encounters",
-        icon: "pi pi-fw pi-pencil",
-        path: "/MyEncounters",
-      },
-    ]);
+        label: 'My Encounters',
+        icon: 'pi pi-fw pi-pencil',
+        path: '/MyEncounters'
+      }
+    ])
 
-    return { items };
-  },
-};
+    return { items }
+  }
+}
 </script>
 
 <style scoped>
 #nav {
   margin-bottom: 20px;
+  position: static;
+  width: 100% !important;
 }
-
 a {
   text-decoration: none;
   color: #2c3e50;
