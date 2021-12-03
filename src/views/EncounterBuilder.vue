@@ -1,10 +1,10 @@
 <template>
   <Toast />
   <div class="grid">
-    <div class="col-12 md:col-12 lg:col-4">
+    <div class="col-12 md:col-12 xl:col-4">
       <Card>
         <template #content>
-          <label for="grouplevel">Level</label>
+          <label for="grouplevel">Lvl</label>
           <InputNumber
             id="grouplevel"
             v-model="grouplevel"
@@ -12,6 +12,7 @@
             min="1"
             max="9"
           />
+
           <label id="playerCountLabel" for="playerCount">Players</label>
           <InputNumber
             id="playerCount"
@@ -29,7 +30,7 @@
         </template>
       </Card>
     </div>
-    <div class="col-12 md:col-12 lg:col-8">
+    <div class="col-12 sm:col-12 md:col-12 lg:col-12 xl:col-8">
       <div>
         <Card>
           <template #content> <MonsterTable /> </template

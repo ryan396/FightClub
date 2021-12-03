@@ -10,11 +10,11 @@
         </button>
       </template>
       <div class="grid">
-        <div class="col-8">
+        <div class="col-12 sm:col-9 md:col-9 lg:col-10 xl:col-9">
           <p>Counts As: {{ item.countsAs }}</p>
           <p>Source: {{ item.page }}</p>
         </div>
-        <div class="col-1">
+        <div class="col-12 sm:col-1">
           <InputNumber
             id="qty-input"
             v-model="item.quantity"
