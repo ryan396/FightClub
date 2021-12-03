@@ -10,7 +10,7 @@
         </button>
       </template>
       <div class="grid">
-        <div class="col-12 sm:col-9 md:col-9 lg:col-10 xl:col-9">
+        <div class="col-12 sm:col-8 md:col-9 lg:col-10 xl:col-8">
           <p>Counts As: {{ item.countsAs }}</p>
           <p>Source: {{ item.page }}</p>
         </div>

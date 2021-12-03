@@ -1,5 +1,5 @@
 <template>
-  <Toast />
+  <Toast position="top-center" />
   <div class="grid">
     <div class="col-12 md:col-12 xl:col-4">
       <Card>

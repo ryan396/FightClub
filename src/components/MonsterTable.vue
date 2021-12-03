@@ -38,19 +38,7 @@
         />
       </template>
     </Column>
-    <Column field="name" header="Name" headerStyle="width: 400px">
-      <template #body="{data}">
-        {{ data.name }}
-      </template>
-      <template #filter="{filterModel}">
-        <InputText
-          type="text"
-          v-model="filterModel.value"
-          class="p-column-filter"
-          placeholder="Search by name"
-        />
-      </template>
-    </Column>
+    <Column field="name" header="Name" headerStyle="width: 400px"> </Column>
     <Column
       field="level"
       header="Level"

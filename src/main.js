@@ -22,6 +22,7 @@ import Panel from 'primevue/panel'
 import InputNumber from 'primevue/inputnumber'
 import Toast from 'primevue/toast'
 import ToastService from 'primevue/toastservice'
+import VueHtmlToPaper from '../VueHtmlToPaper'
 
 const app = createApp(App)
 
@@ -40,6 +41,7 @@ app.component('InputText', InputText)
 app.component('Panel', Panel)
 app.component('InputNumber', InputNumber)
 app.component('Toast', Toast)
+app.use(VueHtmlToPaper)
 app.use(ToastService)
 app.use(router)
 app.use(store)
