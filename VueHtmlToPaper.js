@@ -18,7 +18,11 @@ const VueHtmlToPaper = {
       let defaultName = '_blank',
         defaultSpecs = ['fullscreen=yes', 'titlebar=yes', 'scrollbars=yes'],
         defaultReplace = true,
-        defaultStyles = []
+        defaultStyles = [
+          'https://unpkg.com/primevue/resources/themes/saga-blue/theme.css',
+          'https://unpkg.com/primevue/resources/primevue.min.css',
+          'https://unpkg.com/primevue/resources/primeflex/primeflex.css'
+        ]
       let {
         name = defaultName,
         specs = defaultSpecs,

@@ -1,15 +1,29 @@
-<template>
-  <div id="PrintSection">
-    <div></div>
-    <div id="panel" v-for="(item, index) in encounterList" v-bind:key="index">
-      <DataTable :value="item.encounter" responsiveLayout="scroll">
-        <Column field="name" header="Name"></Column>
-        <!-- <Column field="category" header="Category"></Column>
-            <Column field="quantity" header="Quantity"></Column> -->
+<template id="PrintSection">
+  <Button @click="print" style="marginBottom: 10px">Print</Button>
+  <div id="PrintSection" class="grid container">
+    <div
+      id="panel"
+      v-for="(item, index) in encounterList"
+      v-bind:key="index"
+      class="col-12 md:col-12 xl:col-6"
+    >
+      <DataTable
+        :value="item.encounter"
+        responsiveLayout="scroll"
+        class="table-header p-d-flex p-flex-column p-flex-md-row p-jc-md-between"
+      >
+        <template #header>
+          Encounter: {{ index + 1 }} CR: {{ item.challengeRating }}
+        </template>
+        <Column field="name" header="Name"> </Column>
+        <Column field="level" header="Level"></Column>
+        <Column field="class" header="Class"></Column>
+        <Column field="type" header="Type"></Column>
+        <Column field="countsAs" header="Counts As"></Column>
+        <Column field="page" header="Page"></Column>
       </DataTable>
     </div>
   </div>
-  <Button @click="print">Print</Button>
 </template>
 
 <script>
@@ -33,3 +47,5 @@ export default {
   name: 'MyEncounters'
 }
 </script>
+
+<style scope></style>
