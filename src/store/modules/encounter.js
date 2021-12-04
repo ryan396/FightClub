@@ -1,7 +1,11 @@
-export const state = {
-  encounter: [],
-  challengeRating: 0
+const getDefaultState = () => {
+  return {
+    encounter: [],
+    challengeRating: 0
+  }
 }
+
+const state = getDefaultState()
 
 const getters = {
   getEncounter: state => {
@@ -40,6 +44,9 @@ const actions = {
   },
   removeMonster({ commit }, name) {
     commit('removeMonster', name)
+  },
+  resetState({ commit }) {
+    commit('reset_state')
   }
 }
 
@@ -63,6 +70,9 @@ const mutations = {
   decrementMonsterCount(state, { name }) {
     const selectedMonster = state.encounter.find(item => item.name === name)
     selectedMonster.quantity--
+  },
+  reset_state() {
+    Object.assign(state, getDefaultState())
   }
 }
 

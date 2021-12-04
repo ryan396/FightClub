@@ -16,7 +16,8 @@ const actions = {
 
 const mutations = {
   saveEncounter(state, encounter) {
-    state.myEncounterList.push(encounter)
+    let newCounter = { ...encounter }
+    state.myEncounterList.push(newCounter)
   }
   // removeEncounter(state, encounter) {}
 }

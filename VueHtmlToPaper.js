@@ -26,8 +26,6 @@ const VueHtmlToPaper = {
         styles = defaultStyles
       } = options
 
-      // If has localOptions
-      // TODO: improve logic
       // eslint-disable-next-line
       if (!!localOptions) {
         if (localOptions.name) name = localOptions.name

@@ -64,6 +64,7 @@ export default {
         detail: 'Encounter saved',
         life: 3000
       })
+      store.dispatch(`encounter/resetState`)
     }
 
     const challengeRating = computed(
