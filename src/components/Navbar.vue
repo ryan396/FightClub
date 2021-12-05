@@ -55,8 +55,7 @@ export default {
 <style scoped>
 #nav {
   margin-bottom: 20px;
-  position: static;
-  width: 100% !important;
+  left: 0;
 }
 a {
   text-decoration: none;

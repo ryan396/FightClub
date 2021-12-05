@@ -4,23 +4,28 @@ const getDefaultState = () => {
     challengeRating: 0
   }
 }
-
 const state = getDefaultState()
+
+const calculateChallengeRating = state => {
+  let challengeRating = 0
+  state.encounter.forEach(item => {
+    challengeRating += item.quantity * item.countsAs
+  })
+
+  state.challengeRating = (
+    Math.round(challengeRating * 100 + Number.EPSILON) / 100
+  ).toFixed(2)
+
+  return state.challengeRating
+}
 
 const getters = {
   getEncounter: state => {
-    state.challengeRating = 0
-    state.encounter.forEach(item => {
-      state.challengeRating += item.quantity * item.countsAs
-    })
+    calculateChallengeRating(state)
     return state
   },
   getChallengeRating: state => {
-    let challengeRating = 0
-    state.encounter.forEach(item => {
-      challengeRating += item.quantity * item.countsAs
-    })
-    return challengeRating
+    return calculateChallengeRating(state)
   }
 }
 

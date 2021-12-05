@@ -7,7 +7,7 @@
     :paginator="true"
     showGridlines
     :rows="10"
-    stripedRows="true"
+    stripedRows
     paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
     :rowsPerPageOptions="[10, 20, 50]"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
