@@ -32,10 +32,14 @@
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
 import { useStore } from 'vuex'
 
 export default {
+  props: {
+    encounter: {
+      type: Array
+    }
+  },
   setup() {
     const store = useStore()
 
@@ -51,11 +55,7 @@ export default {
       store.dispatch(`encounter/removeMonster`, name)
     }
 
-    const encounter = computed(
-      () => store.getters[`encounter/getEncounter`].encounter
-    )
-
-    return { encounter, updateMonsterCount, removeMonster }
+    return { updateMonsterCount, removeMonster }
   }
 }
 </script>

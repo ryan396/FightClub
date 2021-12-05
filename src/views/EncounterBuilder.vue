@@ -28,7 +28,7 @@
               >Save</Button
             >
             <Divider />
-            <Encounter />
+            <Encounter v-bind:encounter="encounter.encounter" />
           </template>
         </Card>
       </div>
