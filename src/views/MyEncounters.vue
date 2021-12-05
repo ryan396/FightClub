@@ -19,6 +19,7 @@
             Encounter: {{ index + 1 }} CR: {{ item.challengeRating }}
           </template>
           <Column field="name" header="Name"> </Column>
+          <Column field="quantity" header="Quantity"></Column>
           <Column field="level" header="Level"></Column>
           <Column field="class" header="Class"></Column>
           <Column field="type" header="Type"></Column>

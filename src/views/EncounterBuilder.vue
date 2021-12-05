@@ -22,7 +22,7 @@
               min="1"
             />
             <Divider />
-            Challenge Rating: {{ challengeRating }}
+            Challenge Rating: {{ encounter.challengeRating }}
             <Divider />
             <Button style="marginRight: 10px" @click="saveEncounter"
               >Save</Button
@@ -79,11 +79,9 @@ export default {
       }
     }
 
-    const challengeRating = computed(
-      () => store.getters[`encounter/getChallengeRating`]
-    )
+    const encounter = computed(() => store.getters[`encounter/getEncounter`])
 
-    return { grouplevel, playerCount, saveEncounter, challengeRating }
+    return { grouplevel, playerCount, saveEncounter, encounter }
   },
   name: 'App',
   components: {
